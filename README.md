@@ -28,25 +28,37 @@ The Analysis of the election shows that:
 The Python script used for this audit contained no specific code pertaining to the Colorado election that the script analyzed. This means it can be used on any election data with the same format as the election_results.csv used here. If the county and vote data are present but in a different order, it's just a matter of changing some array indices to match the script to the data. In the case of a ranked-choice election such as the recent mayoral election in New York, the script only requires one more loop and a few conditional statement to be extended for use with ranked choice voting. Here is the Pseudo-Code for such an extension:
 
 initialize "eliminated" array
+
 initialize "fewest votes"
 
 while winner == false:
 
   fewest votes = 0
+  
   eliminated = ""
 
   iterate through records counting votes
+  
     for candidate choices in range(columns with ranked choices)
+    
       if candidate not eliminated
+      
         increment candidate's vote count
+        
         break out of for loop
 
   iterate through candidate dictionary
+  
     if candidate has >50% of votes:
+    
       winner = true
+      
     if candidate's votes < fewest votes:
+    
       fewest votes = candidate's votes
+      
       eliminated = candidate name
     
   eliminated.append(eliminated)
+  
   reset vote totals for candidates to 0
